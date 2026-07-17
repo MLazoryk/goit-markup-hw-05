@@ -219,7 +219,7 @@
       </div>
     </footer>
 
-    <div class="backdrop" data-modal>
+    <div id="modal" class="backdrop" data-modal>
       <div class="modal">
         <button type="button" class="modal-close" data-modal-close>
           <svg width="8" height="8" class="modal-close-icon"><use href="./images/icons.svg#icon-close"></use></svg>
@@ -265,7 +265,7 @@
 
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        const backdrop = document.querySelector('.backdrop');
+        const backdrop = document.querySelector('#modal');
         const openBtn = document.querySelector('[data-modal-open]');
         const closeBtn = document.querySelector('[data-modal-close]');
         if (openBtn && backdrop) {
