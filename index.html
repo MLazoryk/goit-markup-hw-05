@@ -36,6 +36,11 @@
             <li class="address-item"><a href="tel:+110001111111" class="address-link">+11 (000) 111-11-11</a></li>
           </ul>
         </address>
+        <button type="button" class="mobile-menu-toggle" aria-label="Open menu">
+          <svg width="32" height="22">
+            <use href="./images/icons.svg#icon-menu"></use>
+          </svg>
+        </button>
       </div>
     </header>
 
@@ -218,7 +223,7 @@
         <div class="footer-subscribe">
           <p class="footer-subscribe-title">Subscribe</p>
           <form class="subscribe-form" name="subscribe_form">
-            <label for="subscribe-email" class="visually-hidden">Email</label>
+            <label for="subscribe-email" class="sr-only">Email</label>
             <input type="email" name="subscribe_email" id="subscribe-email" class="subscribe-input" placeholder="E-mail" />
             <button type="submit" class="subscribe-button">Subscribe<svg width="24" height="24" class="subscribe-icon"><use href="./images/icons.svg#icon-send"></use></svg></button>
           </form>
@@ -234,9 +239,7 @@
             <use href="./images/icons.svg#icon-close"></use>
           </svg>
         </button>
-
         <p class="modal-form-title">Leave your contacts and we will call you back</p>
-
         <form class="modal-form" name="application_form">
           <div class="modal-field">
             <label for="user-name" class="modal-label">Name</label>
@@ -247,7 +250,6 @@
               </svg>
             </div>
           </div>
-
           <div class="modal-field">
             <label for="user-phone" class="modal-label">Phone</label>
             <div class="modal-input-wrapper">
@@ -257,7 +259,6 @@
               </svg>
             </div>
           </div>
-
           <div class="modal-field">
             <label for="user-email" class="modal-label">Email</label>
             <div class="modal-input-wrapper">
@@ -267,14 +268,12 @@
               </svg>
             </div>
           </div>
-
           <div class="modal-field modal-field-comment">
             <label for="user-comment" class="modal-label">Comment</label>
             <textarea name="user_comment" id="user-comment" class="modal-textarea" placeholder="Text input" rows="4"></textarea>
           </div>
-
           <div class="modal-checkbox-field">
-            <input type="checkbox" name="privacy_policy" id="privacy-policy" class="modal-checkbox visually-hidden" required />
+            <input type="checkbox" name="privacy_policy" id="privacy-policy" class="modal-checkbox sr-only" required />
             <label for="privacy-policy" class="modal-checkbox-label">
               <span class="modal-checkbox-icon">
                 <svg width="10" height="8" class="modal-checkbox-svg">
@@ -287,13 +286,54 @@
               </span>
             </label>
           </div>
-
           <button type="submit" class="modal-submit-button">Send</button>
         </form>
       </div>
     </div>
 
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" data-menu>
+      <div class="mobile-menu-container">
+        <button type="button" class="mobile-menu-close" data-menu-close>
+          <svg width="8" height="8">
+            <use href="./images/icons.svg#icon-close"></use>
+          </svg>
+        </button>
+        <nav class="mobile-nav">
+          <ul class="mobile-nav-list">
+            <li class="mobile-nav-item"><a href="#features" class="mobile-nav-link">Features</a></li>
+            <li class="mobile-nav-item"><a href="#team" class="mobile-nav-link">Team</a></li>
+            <li class="mobile-nav-item"><a href="#portfolio" class="mobile-nav-link">Portfolio</a></li>
+          </ul>
+        </nav>
+        <address class="mobile-address">
+          <a href="tel:+110001111111" class="mobile-phone">+11 (000) 111-11-11</a>
+          <a href="mailto:info@devstudio.com" class="mobile-email">info@devstudio.com</a>
+        </address>
+        <ul class="mobile-socials">
+          <li><a href="#" aria-label="Instagram"><svg width="24" height="24"><use href="./images/icons.svg#icon-instagram"></use></svg></a></li>
+          <li><a href="#" aria-label="Twitter"><svg width="24" height="24"><use href="./images/icons.svg#icon-twitter"></use></svg></a></li>
+          <li><a href="#" aria-label="Facebook"><svg width="24" height="24"><use href="./images/icons.svg#icon-facebook"></use></svg></a></li>
+          <li><a href="#" aria-label="LinkedIn"><svg width="24" height="24"><use href="./images/icons.svg#icon-linkedin"></use></svg></a></li>
+        </ul>
+      </div>
+    </div>
+
     <script>
+      // Mobile menu
+      const menuToggle = document.querySelector('.mobile-menu-toggle');
+      const menu = document.querySelector('.mobile-menu');
+      const menuClose = document.querySelector('.mobile-menu-close');
+
+      if (menuToggle && menu) {
+        menuToggle.addEventListener('click', function() { menu.classList.add('is-open'); });
+        menuClose.addEventListener('click', function() { menu.classList.remove('is-open'); });
+        menu.addEventListener('click', function(e) {
+          if (e.target === menu) { menu.classList.remove('is-open'); }
+        });
+      }
+
+      // Modal
       document.addEventListener('DOMContentLoaded', function() {
         const backdrop = document.querySelector('#modal');
         const openBtn = document.querySelector('[data-modal-open]');
